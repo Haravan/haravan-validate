@@ -1,0 +1,33 @@
+{
+  "name": "haravan-validate",
+  "version": "1.0.0",
+  "description": "express middleware to validate signature for haravan webhooks",
+  "main": "index.js",
+  "dependencies": {},
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "devDependencies": {
+    "body-parser": "~1.10.0",
+    "express": "~4.10.6",
+    "mocha": "~1.20.1",
+    "supertest": "~0.15.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "haravan",
+    "webhook",
+    "gaw",
+    "validate",
+    "express"
+  ],
+  "author": "Haravan team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Haravan/haravan-validate"
+  },
+  "homepage": "https://github.com/Haravan/haravan-validate",
+  "bugs": {
+    "url": "https://github.com/Haravan/haravan-validate/issues"
+  }
+}
