@@ -1,6 +1,6 @@
 {
   "name": "haravan-validate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "express middleware to validate signature for haravan webhooks",
   "main": "index.js",
   "dependencies": {},
