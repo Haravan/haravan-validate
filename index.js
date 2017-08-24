@@ -8,26 +8,33 @@ function haravan(secret, field) {
 
   if (!secret) throw new Error('secret is required');
   field = field || 'x-haravan-hmac-sha256';
+
   return function(req, res, next) {
-    var raw = '';
-    req.on('data', function(chunk) {
-      raw += chunk
-    });
 
-    req.on('end', function() {
-      req.haravanBody = raw
-    });
+    var signature = req.get(field);
+    if(signature){
+      var raw = '';
+      req.on('data', function(chunk) {
+        raw += chunk
+      });
 
-    req.fromHaravan = function() {
-      var header = req.get(field);
-      var sh = crypto
-        .createHmac('sha256', secret)
-        .update(new Buffer(req.haravanBody, 'utf8'))
-        .digest('base64');
+      req.on('end', function() {
+        req.haravanBody = raw
+      });
 
-      return sh === header
-    };
+      req.fromHaravan = function() {
+        var header = req.get(field);
+        var sh = crypto
+          .createHmac('sha256', secret)
+          .update(new Buffer(req.haravanBody, 'utf8'))
+          .digest('base64');
 
-    next()
+        return sh === header
+      };
+
+      next();
+    }else{
+      next();
+    }
   }
 }
