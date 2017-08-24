@@ -34,6 +34,10 @@ function haravan(secret, field) {
 
       next();
     }else{
+      req.fromHaravan = function() {
+        return false;
+      };
+
       next();
     }
   }
