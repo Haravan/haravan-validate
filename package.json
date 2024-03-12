@@ -19,7 +19,7 @@
 	"author": "Haravan team",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Haravan/haravan-validate"
+		"url": "git+https://github.com/Haravan/haravan-validate.git"
 	},
 	"homepage": "https://github.com/Haravan/haravan-validate",
 	"bugs": {
