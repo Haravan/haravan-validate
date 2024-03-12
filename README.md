@@ -1,6 +1,6 @@
 # haravan-validate
 
-Simple express middleware to validate haravan web hooks
+Simple express middleware to validate haravan webhooks
 
 ## Install
 
@@ -11,31 +11,31 @@ $ npm install --save haravan-validate
 ## Usage
 
 ```js
-var express = require('express')
-  , bodyParser = require('body-parser')
-  , Haravan = require('haravan-validate')
-  , haravanSecret = process.env.HARAVAN_SECRET
+const express = require("express");
+const HaravanValidate = require("haravan-validate");
+const VERIFY_TOKEN_SECRET = process.env.VERIFY_TOKEN_SECRET;
 
-var haravan = new Haravan(haravanSecret)
+const middlewareValidate = new HaravanValidate(VERIFY_TOKEN_SECRET);
+const app = express();
+
 // make sure the haravan validate middleware
-// is added before bodyParser
-var middleware = [haravan, bodyParser.json()]
+// is added before express.json()
+app.use(middlewareValidate);
+app.use(express.json());
 
-var app = express()
+app.post("/webhook", function (req, res) {
+	// validate the request is from haravan
+	if (!req.fromHaravan()) {
+		return res.status(401).send();
+	}
 
-app.post('/webhook', middleware, function(req, res) {
-  // validate the request is from haravan
-  if (!req.fromHaravan()) {
-    return res.status(401).send()
-  }
+	// send success notification to haravan
+	// done before to prevent timeout
+	res.status(200).send();
 
-  // send success notification to haravan
-  // done before to prevent timeout
-  res.status(200).send()
-
-  var body = req.body
-  // process webhook
-})
+	const body = req.body;
+	// process webhook
+});
 ```
 
 ## Test
@@ -43,8 +43,3 @@ app.post('/webhook', middleware, function(req, res) {
 ```bash
 $ npm test
 ```
-
-
-## Author
-
-Haravan Team

@@ -1,33 +1,28 @@
 {
-  "name": "haravan-validate",
-  "version": "1.0.2",
-  "description": "express middleware to validate signature for haravan webhooks",
-  "main": "index.js",
-  "dependencies": {},
-  "scripts": {
-    "test": "mocha -R spec"
-  },
-  "devDependencies": {
-    "body-parser": "~1.10.0",
-    "express": "~4.17.3",
-    "mocha": "~1.20.1",
-    "supertest": "~0.15.0"
-  },
-  "license": "MIT",
-  "keywords": [
-    "haravan",
-    "webhook",
-    "gaw",
-    "validate",
-    "express"
-  ],
-  "author": "Haravan team",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Haravan/haravan-validate"
-  },
-  "homepage": "https://github.com/Haravan/haravan-validate",
-  "bugs": {
-    "url": "https://github.com/Haravan/haravan-validate/issues"
-  }
+	"name": "haravan-validate",
+	"version": "2.0.1",
+	"description": "express middleware to validate signature for haravan webhooks",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha -R spec"
+	},
+	"devDependencies": {
+		"express": "^4.18.3",
+		"mocha": "^10.3.0",
+		"supertest": "^6.3.4"
+	},
+	"license": "MIT",
+	"keywords": [
+		"haravan",
+		"webhook"
+	],
+	"author": "Haravan team",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Haravan/haravan-validate"
+	},
+	"homepage": "https://github.com/Haravan/haravan-validate",
+	"bugs": {
+		"url": "https://github.com/Haravan/haravan-validate/issues"
+	}
 }

@@ -1,0 +1,6 @@
+# .prettierignore file
+*/.next
+*/dist
+*/node_modules/
+*/next.config.js
+.gitlab-ci.yml
