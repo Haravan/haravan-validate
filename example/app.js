@@ -4,9 +4,10 @@ const express = require("express");
 const HaravanValidate = require("../index");
 var url = require("node:url");
 
-const VERIFY_TOKEN_SECRET = "99ddfa1bb0de08ea7bc3a70af36cf0ac9f6b94dadbf6949ac5903e54f7240971";
+const CLIENT_SECRET = "cBoYYdP4vfgcWCUNAYhhzaQiHkP5k8xiqZGpK1pkn27naCxcI5x2OMSdOn2Owf3Q";
+const VERIFY_TOKEN = "irtF6SNaARU9JfeZVUzLEBLADwpJAf74";
 
-const middlewareValidate = new HaravanValidate(VERIFY_TOKEN_SECRET);
+const middlewareValidate = new HaravanValidate(CLIENT_SECRET);
 const app = express();
 
 // make sure the haravan validate middleware
@@ -18,7 +19,7 @@ app.use(express.json());
 app.get("/webhook", function (req, res) {
 	let UrlInfo = url.parse(req.url, true);
 
-	if (UrlInfo.query["hub.challenge"] && UrlInfo.query["hub.verify_token"] && UrlInfo.query["hub.verify_token"] === VERIFY_TOKEN_SECRET) {
+	if (UrlInfo.query["hub.challenge"] && UrlInfo.query["hub.verify_token"] && UrlInfo.query["hub.verify_token"] === VERIFY_TOKEN) {
 		return res.status(200).send(UrlInfo.query["hub.challenge"]);
 	} else {
 		return res.status(401).send();

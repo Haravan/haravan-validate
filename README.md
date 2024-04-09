@@ -13,9 +13,9 @@ $ npm install --save haravan-validate
 ```js
 const express = require("express");
 const HaravanValidate = require("haravan-validate");
-const VERIFY_TOKEN_SECRET = process.env.VERIFY_TOKEN_SECRET;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
-const middlewareValidate = new HaravanValidate(VERIFY_TOKEN_SECRET);
+const middlewareValidate = new HaravanValidate(CLIENT_SECRET);
 const app = express();
 
 // make sure the haravan validate middleware
